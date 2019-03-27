@@ -1,5 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 mongoose.connect('mongodb://localhost/nodekb', {useNewUrlParser: true});
 let db = mongoose.connection;
@@ -16,10 +18,17 @@ db.on('error', () => {
 
 const app = express();
 
-let Article = require('./models/articles');
-
+//body parser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 
+//set public folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+let Article = require('./models/articles');
+
+//index route
 app.get('/', (req, res) => {
   Article.find({}, (err, articles) => {
     if (err) {
@@ -29,6 +38,30 @@ app.get('/', (req, res) => {
         title: 'Articles',
         articles: articles
       });
+    }
+  });
+});
+
+//add article route
+app.get('/articles/add', (req, res) => {
+  res.render('add', {
+    title: 'Add Article'
+  });
+});
+
+//add post route
+app.post('/articles/add', (req, res) => {
+  let article = new Article();
+  article.title = req.body.title;
+  article.author = req.body.author;
+  article.body = req.body.body;
+
+  article.save((err) => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      res.redirect('/');
     }
   });
 });

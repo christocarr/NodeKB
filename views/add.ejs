@@ -1,0 +1,19 @@
+<% include ./partials/header %>
+
+<div >
+  <div><%= title %></div>
+  <form action="/articles/add" method="POST">
+    <div>
+      <input type="text" name="title" placeholder="title">
+    </div>
+    <div>
+      <input type="text" name="author" placeholder="author">
+    </div>
+    <div>
+      <textarea type="text" name="body" placeholder="" required></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<% include ./partials/footer %>
