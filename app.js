@@ -16,10 +16,21 @@ db.on('error', () => {
 
 const app = express();
 
+let Article = require('./models/articles');
+
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.render('index');
+  Article.find({}, (err, articles) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.render('index', {
+        title: 'Articles',
+        articles: articles
+      });
+    }
+  });
 });
 
 app.listen(3000, () => {
