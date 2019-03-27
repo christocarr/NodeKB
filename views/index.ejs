@@ -1,1 +1,10 @@
-<h1>Hi World!</h1>
+<% include ./partials/header %>
+<div>
+  <h2><%= title %></h2>
+    <ul>
+      <% articles.forEach((article) => { %>
+        <li><%= article.title %></li>
+      <% }) %>
+    </ul>
+</div>
+<% include ./partials/footer %>
