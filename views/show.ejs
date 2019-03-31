@@ -7,7 +7,8 @@
         <div>
           <p><%= article.body %></p>
         </div>
-        <a class="btn" href="/edit/<%= article.id %>">Edit</a>
+        <a type="button" class="btn btn-light" href="/edit/<%= article.id %>">Edit</a>
+        <a type="button" class="btn btn-danger delete-article" data-id="<%= article._id %>" href="#">Delete</a>
     </div>    
   </div>
 
