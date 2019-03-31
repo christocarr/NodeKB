@@ -1,22 +1,18 @@
-<<% include ./partials/header %>
+<% include ./partials/header %>
 
   <div class="ui container main post">
-    <div class="ui huge header"><%= post.title %> </div>
-      <div class="ui top attached">
-        <div class="item">
-          <img class="ui centered image" src="<%= post.img %>" alt="">
-            <div class="content">
-              <span><%= post.postCreated.toDateString() %></span>
-            </div>
-            <div class="description">
-              <p><%- post.body %></p>
-            </div>
-            <a class="ui orange button" href="/blog/<%= post._id %>/edit">Edit</a>
-            <form class="delete-button" action="/blog/<%= post._id %>?_method=DELETE" method="POST">
-              <button class="ui negative button">Delete</button>
-            </form>
-        </div>    
-      </div>
+    <div class="ui top attached">
+      <h2><%= article.title %></h2>
+      <h5><%= article.author %></h4>
+        <div class="description">
+          <p><%- article.body %></p>
+        </div>
+        <a class="ui orange button" href="#">Edit</a>
+        <form class="delete-button" action="" method="POST">
+          <button class="ui negative button">Delete</button>
+        </form>
+      </div>    
+    </div>
   </div>
 
 <% include ./partials/footer %>

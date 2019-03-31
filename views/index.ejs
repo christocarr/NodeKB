@@ -3,7 +3,7 @@
   <h2><%= title %></h2>
     <ul class="list-group">
       <% articles.forEach((article) => { %>
-        <li class="list-group-item"><%= article.title %></li>
+        <li class="list-group-item"><a href="<%= article.id %>"><%= article.title %></a></li>
       <% }) %>
     </ul>
 </div>

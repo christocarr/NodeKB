@@ -66,6 +66,15 @@ app.post('/articles/add', (req, res) => {
   });
 });
 
+//get article
+app.get('/:id', (req, res) => {
+  Article.findById(req.params.id, (err, article) => {
+    res.render('show', {
+      article:article
+    });
+  });
+});
+
 app.listen(3000, () => {
   console.log('Server started on port 3000');
 });
