@@ -1,18 +1,14 @@
 <% include ./partials/header %>
 
-  <div class="ui container main post">
-    <div class="ui top attached">
+  <div class="container">
+    <div>
       <h2><%= article.title %></h2>
-      <h5><%= article.author %></h4>
-        <div class="description">
-          <p><%- article.body %></p>
+      <h5><%= article.author %></h5>
+        <div>
+          <p><%= article.body %></p>
         </div>
-        <a class="ui orange button" href="#">Edit</a>
-        <form class="delete-button" action="" method="POST">
-          <button class="ui negative button">Delete</button>
-        </form>
-      </div>    
-    </div>
+        <a class="btn" href="/edit/<%= article.id %>">Edit</a>
+    </div>    
   </div>
 
 <% include ./partials/footer %>

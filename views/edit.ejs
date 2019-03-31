@@ -1,19 +1,20 @@
 <% include ./partials/header %>
 
-<div>
-  <div>Edit <%= post.title %></div>
-  <form  action="/blog/<%= post._id %>?_method=PUT" method="POST">
-    <div >
-      <input type="text" name="post[title]" value="<%= post.title %>">
+<div class="container">
+  <h1>Edit <%= article.title %></h1>
+  <form action="/articles/edit/<%= article._id %>" method="POST">
+    <div>
+      <input class="form-control" type="text" name="title" placeholder="title" value="<%= article.title %>">
     </div>
-    <div >
-      <input type="text" name="post[img]" value="<%= post.img %>">
+    <div>
+      <input class="form-control" type="text" name="author" placeholder="author" value="<%= article.author %>">
     </div>
-    <div >
-      <textarea type="text" name="post[body]"><%= post.body %></textarea>
+    <div>
+      <textarea class="form-control" type="text" name="body" placeholder="" required><%= article.body %></textarea>
     </div>
-    <button type="submit">Submit</button>
+    <button class="btn" type="submit">Submit</button>
   </form>
 </div>
+
 
 <% include ./partials/footer %>

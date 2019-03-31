@@ -1,18 +1,18 @@
 <% include ./partials/header %>
 
-<div >
-  <div><%= title %></div>
+<div class="container">
+  <h1><%= title %></h1>
   <form action="/articles/add" method="POST">
     <div>
-      <input type="text" name="title" placeholder="title">
+      <input class="form-control" type="text" name="title" placeholder="title">
     </div>
     <div>
-      <input type="text" name="author" placeholder="author">
+      <input class="form-control" type="text" name="author" placeholder="author">
     </div>
     <div>
-      <textarea type="text" name="body" placeholder="" required></textarea>
+      <textarea class="form-control" type="text" name="body" placeholder="" required></textarea>
     </div>
-    <button type="submit">Submit</button>
+    <button class="btn" type="submit">Submit</button>
   </form>
 </div>
 

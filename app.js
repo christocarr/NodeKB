@@ -66,12 +66,40 @@ app.post('/articles/add', (req, res) => {
   });
 });
 
-//get article
+//get article route
 app.get('/:id', (req, res) => {
   Article.findById(req.params.id, (err, article) => {
     res.render('show', {
       article:article
     });
+  });
+});
+
+//edit article route
+app.get('/edit/:id', (req, res) => {
+  Article.findById(req.params.id, (err, article) => {
+    res.render('edit', {
+      article:article
+    });
+  });
+});
+
+//update article
+app.post('/articles/edit/:id', (req, res) => {
+  let article = {};
+  article.title = req.body.title;
+  article.author = req.body.author;
+  article.body = req.body.body;
+
+  let query = {_id:req.params.id}
+
+  Article.update(query, article, (err) => {
+    if (err) {
+      console.log(err);
+      return;
+    } else {
+      res.redirect('/');
+    }
   });
 });
 
